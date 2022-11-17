@@ -1,6 +1,7 @@
 <?php
 
 function university_post_types() {
+
   //Event post type
   register_post_type('event', [
     'show_in_rest' => true,
@@ -34,6 +35,23 @@ function university_post_types() {
     ),
     'menu_icon' => 'dashicons-awards' //taken from wordoress dashicons website
   ]);
+
+//Professor post type
+register_post_type('professor', [
+  'supports' => ['title', 'editor', 'thumbnail'],// adds featured-image in wp-admin
+  'public' => true,
+  'show_in_rest' => true,//makes have wp-admin new view
+  'labels' => [
+    'name' => 'Professors',
+    'add_new_item' => 'Add New Professor',
+    'edit_item' => 'Edit Professor',
+    'all_items' => 'All Professors',
+    'singular_name' => 'Professor'
+],
+  'menu_icon' => 'dashicons-welcome-learn-more' //taken from worddress dashicons website
+]);
+
+
 }
 
 add_action('init', 'university_post_types');
